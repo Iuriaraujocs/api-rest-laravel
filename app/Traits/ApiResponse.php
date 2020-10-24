@@ -28,14 +28,14 @@ trait ApiResponse{
 
 	protected function errorValidation($validator){
 
-		$message = 'error in fields validation';
+		$message = __('Error in fields validation');
 		return response()->json($this->generalResponse('error', 422, $validator ,$message, $data = null), 422);
 		//No 422, ele fala sobre erros de semântica. Ou seja, não tem erro de sintaxe, mas tem alguma informação faltando
 	}
 
 	protected function errorUnauthorized(){
 
-		$error = 'Unauthorized';
+		$error = __('Unauthorized');
 		return response()->json($this->generalResponse('error', 401, $error, null, $data = null), 401);
 	    //401 - Unauthorized 
 	}
