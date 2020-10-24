@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'api_token'
     ];
 
     /**
@@ -42,11 +42,11 @@ class User extends Authenticatable
 
     public function generateToken()
     {
-        $this->api_token = Str::random(80);
-        // $this->api_token_created_at => Carbon::now();//date('Y-m-d H:i:s')
-        // $this->$token_expires_in = Carbon::now()->addDays(5);
+        $api_token = Str::random(80);
+        // $api_token_created_at => Carbon::now();//date('Y-m-d H:i:s')
+        // $token_expires_in = Carbon::now()->addDays(5);
         $this->save();
 
-        return $this->api_token;
+        return $api_token;
     }
 }
