@@ -14,6 +14,22 @@ class ApiController extends Controller
     //
     use ApiResponse;
 
+    protected function loginSuccessfully($output){
+        $message = __('Login was successfully. Please, use the api_token for future access.');
+        return $this->successResponse($output, $message);
+    }
+
+    protected function registerSuccessfully($output){
+        $message = __('Register successfully');
+        return $this->successResponse($output,$message, 201);
+        //201 Created — Indica que a requisição foi bem sucedida e que um novo registro foi criado como resultado.        
+    }
+
+    protected function forgotSuccessfully(){
+        $message = __('Reset password link sent on your email id.');
+        return $this->successResponse(null,$message);
+    }
+
 }
 
 

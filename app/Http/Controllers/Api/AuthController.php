@@ -1,5 +1,9 @@
 <?php
 
+/**  author: Iuri Cardoso Araujo
+ *   email: iuriaraujoc.eng@gmail.com
+ * */
+
 namespace App\Http\Controllers\Api;
 
 use App\User;
@@ -23,7 +27,7 @@ class AuthController extends ApiController
         $this->request = $request;
     }
 
-    public function Login(){
+    public function login(){
         
         $rules = [
             'email' => 'email|required',
@@ -61,7 +65,7 @@ class AuthController extends ApiController
         }
     }
 
-    public function Register(){
+    public function register(){
     
         $rules = [
             'name' => 'required|max:55',
@@ -108,23 +112,6 @@ class AuthController extends ApiController
 
         return $this->forgotSuccessfully();
     
-    }
-
-
-    private function loginSuccessfully($output){
-        $message = 'Login was successfully. Please, use the api_token for future access.';
-        return $this->successResponse($output, $message);
-    }
-
-    private function registerSuccessfully($output){
-        $message = 'Register successfully';
-        return $this->successResponse($output,$message, 201);
-        //201 Created — Indica que a requisição foi bem sucedida e que um novo registro foi criado como resultado.        
-    }
-
-    private function forgotSuccessfully(){
-        $message = 'Reset password link sent on your email id.';
-        return $this->successResponse(null,$message);
     }
 
 }
